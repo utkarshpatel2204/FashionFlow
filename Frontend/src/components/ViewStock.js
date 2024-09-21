@@ -31,12 +31,12 @@ const ViewStock = (props) => {
             <div className="flex justify-between items-center mb-4">
                 <h1 className="text-left text-4xl font-bold">Stock List</h1>
                 <div className="flex items-center">
-                    <label htmlFor="designNo" className="mr-2">Design No:</label>
+                    <label htmlFor="designNo" className="mr-2">item_name</label>
                     <input 
                         type="text" 
-                        id="designNo"
+                        id="item_name"
                         value={searchTerm}
-                        onChange={(e) => setSearchTerm(e.target.value)} 
+                        onChange={(e) => setSearchTerm(e.target.value)}
                         className="form-input h-10 rounded border border-gray-300 px-4 mr-2" 
                         placeholder="Design No"
                     />
@@ -54,10 +54,10 @@ const ViewStock = (props) => {
                             <tr>
                                 <th scope="col" className="py-3 px-4 border-r border-gray-300 text-center">Sr No</th>
                                 <th scope="col" className="py-1 px-2 border-r border-gray-300 text-center">Image</th>
-                                <th scope="col" className="py-1 px-2 border-r border-gray-300 text-center">Design No</th>
-                                <th scope="col" className="py-1 px-2 border-r border-gray-300 text-center">Color</th>
+                                <th scope="col" className="py-1 px-2 border-r border-gray-300 text-center">Item Name</th>
+                                <th scope="col" className="py-1 px-2 border-r border-gray-300 text-center">Cateory</th>
                                 <th scope="col" className="py-1 px-2 border-r border-gray-300 text-center">Price</th>
-                                <th scope="col" className="py-1 px-2 border-r border-gray-300 text-center">Quantity (Set)</th>
+                                <th scope="col" className="py-1 px-2 border-r border-gray-300 text-center">Quantity</th>
                             </tr>
                         </thead>
                         <tbody className="divide-y divide-gray-300">
@@ -71,10 +71,10 @@ const ViewStock = (props) => {
                                             className="h-24 w-24 object-cover rounded-lg"
                                         />
                                     </td>
-                                    <td className="py-3 px-4 text-center border-r border-gray-300">{product.design_no}</td>
-                                    <td className="py-3 px-4 text-center border-r border-gray-300">{product.color}</td>
+                                    <td className="py-3 px-4 text-center border-r border-gray-300">{product.item_name}</td>
+                                    <td className="py-3 px-4 text-center border-r border-gray-300">{product.category}</td>
                                     <td className="py-3 px-4 text-center border-r border-gray-300">{product.price}</td>
-                                    <td className="py-3 px-4 text-center">{product.total_set}</td>
+                                    <td className="py-3 px-4 text-center">{product.total_quantity}</td>
                                 </tr>
                             ))}
                         </tbody>

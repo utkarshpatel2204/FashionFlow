@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 const AddStock = (props) => {
-    const [stocks, setStocks] = useState([{ item_name: '', total_quantity: 0, color: '', price: 0 }]);
+    const [stocks, setStocks] = useState([{ email:'',item_name: '',category:'',total_quantity: 0, price: 0 }]);
     const [error, setError] = useState('');
 
     const handleInputChange = (index, event) => {
@@ -22,7 +22,7 @@ const AddStock = (props) => {
             const { color, price } = response.data;
 
             const newStocks = [...stocks];
-            newStocks[index].color = color;
+            newStocks[index].category = category;
             newStocks[index].price = price;
             setStocks(newStocks);
         } catch (error) {
@@ -32,7 +32,7 @@ const AddStock = (props) => {
     };
 
     const handleAddRow = () => {
-        setStocks([...stocks, { item_name: '', total_quantity: 0, color: '', price: 0 }]);
+        setStocks([...stocks, { email:'',item_name: '', total_quantity: 0, color: '', price: 0 }]);
     };
 
     const handleRemoveRow = (index) => {
@@ -65,14 +65,14 @@ const AddStock = (props) => {
                 <div className="relative max-h-80 overflow-y-scroll">
                     <table className="min-w-full bg-white border border-gray-300 rounded-lg shadow-md">
                         <thead className="bg-gray-800 text-white sticky top-0 z-10">
-                            <tr>
-                            <th  className="py-3 px-4 border-r border-gray-300 text-center">SrNo.</th>
-                                <th className="py-3 px-4 border-r border-gray-300 text-center">Item Name</th>
-                                <th className="py-3 px-4 border-r border-gray-300 text-center">Quantity</th>
-                                <th className="py-3 px-4 border-r border-gray-300 text-center">Color</th>
-                                <th className="py-3 px-4 border-r border-gray-300 text-center">Price</th>
-                                <th className="py-3 px-4 text-center">Actions</th>
-                            </tr>
+                        <tr>
+                            <th className="py-3 px-4 border-r border-gray-300 text-center">SrNo.</th>
+                            <th className="py-3 px-4 border-r border-gray-300 text-center">Item Name</th>
+                            <th className="py-3 px-4 border-r border-gray-300 text-center">Category</th>
+                            <th className="py-3 px-4 border-r border-gray-300 text-center">Quantity</th>
+                            <th className="py-3 px-4 border-r border-gray-300 text-center">Price</th>
+                            <th className="py-3 px-4 text-center">Actions</th>
+                        </tr>
                         </thead>
                         <tbody className="divide-y divide-gray-300">
                             {stocks.map((stock, index) => (
@@ -90,6 +90,17 @@ const AddStock = (props) => {
                                     </td>
                                     <td className="py-3 px-4 text-center border-r border-gray-300">
                                         <input
+                                            type="text"
+                                            name="category"
+                                            value={stock.category}
+                                            onChange={(event) => handleInputChange(index, event)}
+                                            className="border p-2 rounded"
+                                            placeholder="category"
+                                            readOnly
+                                        />
+                                    </td>
+                                    <td className="py-3 px-4 text-center border-r border-gray-300">
+                                        <input
                                             type="number"
                                             name="total_set"
                                             value={stock.total_quantity}
@@ -98,17 +109,7 @@ const AddStock = (props) => {
                                             placeholder="Total Quantity"
                                         />
                                     </td>
-                                    <td className="py-3 px-4 text-center border-r border-gray-300">
-                                        <input
-                                            type="text"
-                                            name="color"
-                                            value={stock.color}
-                                            onChange={(event) => handleInputChange(index, event)}
-                                            className="border p-2 rounded"
-                                            placeholder="Color"
-                                            readOnly
-                                        />
-                                    </td>
+
                                     <td className="py-3 px-4 text-center border-r border-gray-300">
                                         <input
                                             type="number"
@@ -142,7 +143,7 @@ const AddStock = (props) => {
                     className="bg-gray-700 hover:bg-teal-800 text-white py-2 px-4 rounded"
                 >
                     Add Row
-                </button>   
+                </button>
                 <button
                     onClick={handleSubmit}
                     className="bg-green-500 hover:bg-green-700 text-white py-2 px-4 rounded"

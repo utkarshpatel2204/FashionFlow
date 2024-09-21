@@ -4,7 +4,7 @@ import axios from 'axios';
 const NewOrder = (props) => {
     const [error, setError] = useState('');
     const [rows, setRows] = useState([
-        { id: 1, item_name: '', total_quantity: '', totalPrice: 0 }
+        { id: 1,email:'',shop_name:'',vendors_details:'', date: '', sellsList: '', total_price: 0 }
     ]);
 
     const handleInputChange = (index, event) => {

@@ -107,20 +107,24 @@ const VendorsHistory = (props) => {
                 <div className="relative max-h-80 overflow-y-scroll">
                     <table className="min-w-full bg-white border border-gray-300 rounded-lg shadow-md">
                         <thead className="bg-gray-800 text-white sticky top-0 z-10">
-                            <tr>
-                                <th scope="col" className="py-3 px-4 border-r border-gray-300 text-center">Shop Name</th>
-                                <th scope="col" className="py-3 px-4 border-r border-gray-300 text-center">Owner Name</th>
-                                <th scope="col" className="py-3 px-4 border-r border-gray-300 text-center">Contact Number</th>
-                                <th scope="col" className="py-3 px-4 border-r border-gray-300 text-center">GST Number</th>
-                                <th scope="col" className="py-3 px-4 text-center">Address</th>
-                            </tr>
+                        <tr>
+                            <th scope="col" className="py-3 px-4 border-r border-gray-300 text-center">Shop Name</th>
+                            <th scope="col" className="py-3 px-4 border-r border-gray-300 text-center">Owner Name</th>
+                            <th scope="col" className="py-3 px-4 border-r border-gray-300 text-center">Email</th>
+                            <th scope="col" className="py-3 px-4 border-r border-gray-300 text-center">Contact Number
+                            </th>
+                            <th scope="col" className="py-3 px-4 border-r border-gray-300 text-center">GST Number</th>
+                            <th scope="col" className="py-3 px-4 text-center">Address</th>
+                        </tr>
                         </thead>
                         <tbody className="divide-y divide-gray-300">
                             {filteredVendors.length > 0 ? (
                                 filteredVendors.map((vendor) => (
-                                    <tr key={vendor.id} className="hover:bg-gray-200 transition duration-300 ease-in-out">
+                                    <tr key={vendor.id}
+                                        className="hover:bg-gray-200 transition duration-300 ease-in-out">
                                         <td className="py-3 px-4 text-center border-r border-gray-300">{vendor.shop_name}</td>
                                         <td className="py-3 px-4 text-center border-r border-gray-300">{vendor.owner_name}</td>
+                                        <td className="py-3 px-4 text-center border-r border-gray-300">{vendor.email}</td>
                                         <td className="py-3 px-4 text-center border-r border-gray-300">{vendor.contact}</td>
                                         <td className="py-3 px-4 text-center border-r border-gray-300">{vendor.GST}</td>
                                         <td className="py-3 px-4 text-center">{vendor.address}</td>
