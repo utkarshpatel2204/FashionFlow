@@ -4,7 +4,7 @@ import axios from 'axios';
 const NewOrder = (props) => {
     const [error, setError] = useState('');
     const [rows, setRows] = useState([
-        { id: 1, designNo: '', quantity: '', totalPrice: 0 }
+        { id: 1, item_name: '', total_quantity: '', totalPrice: 0 }
     ]);
 
     const handleInputChange = (index, event) => {
@@ -15,7 +15,7 @@ const NewOrder = (props) => {
         
 
         // Calculate totalPrice based on pieces and pricePerSet
-        if (name === 'designNo') {
+        if (name === 'item_name') {
             updatedRows[index].totalPrice = value * updatedRows[index].pricePerSet;
         }
 
@@ -25,7 +25,7 @@ const NewOrder = (props) => {
    
 
     const addRow = () => {
-        setRows([...rows, { id: rows.length + 1, designNo: '', pieces: '', pricePerSet: 0, totalPrice: 0 }]);
+        setRows([...rows, { id: rows.length + 1, item_name: '', pieces: '', pricePerSet: 0, totalPrice: 0 }]);
     };
 
     const deleteRow = (index) => {
@@ -60,8 +60,8 @@ const NewOrder = (props) => {
                         <thead className="bg-gray-800 text-white sticky top-0 z-10">
                             <tr>
                                 <th className="py-3 px-4 border-r border-gray-300 text-center">Sr No.</th>
-                                <th className="py-3 px-4 border-r border-gray-300 text-center">Design No</th>
-                                <th className="py-3 px-4 border-r border-gray-300 text-center">Quantity (set)</th>
+                                <th className="py-3 px-4 border-r border-gray-300 text-center">Item Name</th>
+                                <th className="py-3 px-4 border-r border-gray-300 text-center">Quantity</th>
                                  <th className="py-3 px-4 border-r border-gray-300 text-center">Total Price</th>
                                 <th className="py-3 px-4 text-center">Action</th>
                             </tr>
@@ -73,9 +73,9 @@ const NewOrder = (props) => {
                                     <td className="py-3 px-4 text-center border-r border-gray-300">
                                         <input
                                             type="text"
-                                            name="designNo"
-                                            placeholder='Design no.'
-                                            value={row.designNo}
+                                            name="item_name"
+                                            placeholder='Item Name'
+                                            value={row.item_name}
                                             onChange={(event) => handleInputChange(index, event)}
                                             className="border p-2 rounded"
                                         />
@@ -85,7 +85,7 @@ const NewOrder = (props) => {
                                             type="number"
                                             name="quantity"
                                             min={0}
-                                            value={row.quantity}
+                                            value={row.total_quantity}
                                             placeholder='Quantity'
                                             onChange={(event) => handleInputChange(index, event)}
                                             className="border p-2 rounded"

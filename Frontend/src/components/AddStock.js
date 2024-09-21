@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 const AddStock = (props) => {
-    const [stocks, setStocks] = useState([{ design_no: '', quantity: 0, color: '', price: 0 }]);
+    const [stocks, setStocks] = useState([{ item_name: '', total_quantity: 0, color: '', price: 0 }]);
     const [error, setError] = useState('');
 
     const handleInputChange = (index, event) => {
@@ -11,14 +11,14 @@ const AddStock = (props) => {
         newStocks[index][name] = value;
         setStocks(newStocks);
 
-        if (name === 'design_no') {
+        if (name === 'item_name') {
             fetchProductDetails(index, value);
         }
     };
 
-    const fetchProductDetails = async (index, designNo) => {
+    const fetchProductDetails = async (index, item_name) => {
         try {
-            const response = await axios.get(`http://localhost:8000/${designNo}/`);
+            const response = await axios.get(`http://localhost:8000/${item_name}/`);
             const { color, price } = response.data;
 
             const newStocks = [...stocks];
@@ -32,7 +32,7 @@ const AddStock = (props) => {
     };
 
     const handleAddRow = () => {
-        setStocks([...stocks, { design_no: '', quantity: 0, color: '', price: 0 }]);
+        setStocks([...stocks, { item_name: '', total_quantity: 0, color: '', price: 0 }]);
     };
 
     const handleRemoveRow = (index) => {
@@ -67,8 +67,8 @@ const AddStock = (props) => {
                         <thead className="bg-gray-800 text-white sticky top-0 z-10">
                             <tr>
                             <th  className="py-3 px-4 border-r border-gray-300 text-center">SrNo.</th>
-                                <th className="py-3 px-4 border-r border-gray-300 text-center">Design No</th>
-                                <th className="py-3 px-4 border-r border-gray-300 text-center">Quantity (Set)</th>
+                                <th className="py-3 px-4 border-r border-gray-300 text-center">Item Name</th>
+                                <th className="py-3 px-4 border-r border-gray-300 text-center">Quantity</th>
                                 <th className="py-3 px-4 border-r border-gray-300 text-center">Color</th>
                                 <th className="py-3 px-4 border-r border-gray-300 text-center">Price</th>
                                 <th className="py-3 px-4 text-center">Actions</th>
@@ -81,21 +81,21 @@ const AddStock = (props) => {
                                     <td className="py-3 px-4 text-center border-r border-gray-300">
                                         <input
                                             type="text"
-                                            name="design_no"
-                                            value={stock.design_no}
+                                            name="item_name"
+                                            value={stock.item_name}
                                             onChange={(event) => handleInputChange(index, event)}
                                             className="border p-2 rounded"
-                                            placeholder="Design No"
+                                            placeholder="Item Name"
                                         />
                                     </td>
                                     <td className="py-3 px-4 text-center border-r border-gray-300">
                                         <input
                                             type="number"
                                             name="total_set"
-                                            value={stock.quantity}
+                                            value={stock.total_quantity}
                                             onChange={(event) => handleInputChange(index, event)}
                                             className="border p-2 rounded"
-                                            placeholder="Total Set"
+                                            placeholder="Total Quantity"
                                         />
                                     </td>
                                     <td className="py-3 px-4 text-center border-r border-gray-300">
