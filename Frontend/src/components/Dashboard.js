@@ -129,7 +129,9 @@ const Dashboard = () => {
                         {isDropdownActive(4) && (
                             <ul className="list-none p-2 ml-2 bg-gray-800 mt-2">
                                 <li className="my-2">
-                                    <button className="text-sm text-gray-300 bg-transparent border-none" onClick={() => setActiveContent(<Purchase Email={email}/>)}> View Expenses</button>
+                                    <button className="text-sm text-gray-300 bg-transparent border-none"
+                                           onClick={() => setActiveContent(<Purchase Email={email}/>)}
+                                    > View Expenses</button>
                                 </li>
                                 <li className="my-2">
                                     <button className="text-sm text-gray-300 bg-transparent border-none">Add Expense</button>
@@ -147,7 +149,7 @@ const Dashboard = () => {
                 <header className="bg-gray-200 p-5 text-center border-b border-gray-400">
                     <h1 className="text-2xl text-gray-800 font-serif">Welcome, {username}</h1>
                 </header>
-                <div className="mt-5 text-lg text-gray-800 flex justify-center items-center h-4/5">
+                <div className="mt-5 text-lg text-gray-800 flex justify-center items-center">
                     {activeContent}
                 </div>
             </div>

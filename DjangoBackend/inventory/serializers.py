@@ -12,7 +12,7 @@ class ItemSerializer(serializers.ModelSerializer):
 class VendorSerializer(serializers.ModelSerializer):
     class Meta:
         model=Vendor
-        fields = ['shop_name', 'owner_name', 'contact', 'GST', 'address']
+        fields = '__all__'
 
 class SellSerializer(serializers.ModelSerializer):
     class Meta:

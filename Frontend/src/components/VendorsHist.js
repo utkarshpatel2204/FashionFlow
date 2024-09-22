@@ -25,7 +25,6 @@ const VendorsHistory = (props) => {
                 console.error('Error fetching vendors:', error);
             }
         };
-
         fetchVendors();
     }, [userEmail]);
 
