@@ -8,6 +8,7 @@ import AddVendor from './Addvendor';
 import VendorsHist from './VendorsHist';
 import NewOrder from './NewOrder';
 import AddStock from './AddStock';
+import Purchase from "./Purchase";
 
 
 const Dashboard = () => {
@@ -128,7 +129,7 @@ const Dashboard = () => {
                         {isDropdownActive(4) && (
                             <ul className="list-none p-2 ml-2 bg-gray-800 mt-2">
                                 <li className="my-2">
-                                    <button className="text-sm text-gray-300 bg-transparent border-none">View Expenses</button>
+                                    <button className="text-sm text-gray-300 bg-transparent border-none" onClick={() => setActiveContent(<Purchase Email={email}/>)}> View Expenses</button>
                                 </li>
                                 <li className="my-2">
                                     <button className="text-sm text-gray-300 bg-transparent border-none">Add Expense</button>

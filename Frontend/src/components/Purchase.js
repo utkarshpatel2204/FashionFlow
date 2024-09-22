@@ -5,8 +5,8 @@ import axios from 'axios';
 function AddPurchase(props) {
     const userEmail = props.Email;
 
-    const [vendorDetails, setVendorsDetails] = useState([]);
-    const [shopName, setShopName] = useState('');
+    const [partiesDetails, setVendorsDetails] = useState([]);
+    const [partyName, setShopName] = useState('');
     const [partyDetails, setPartyDetails] = useState(null); // To hold fetched party details
     const [purchaseItems, setPurchaseItems] = useState([
         { srNo: 1, purchaseItem: '', quantity: 0, pieces: 0 ,total_price:0},
@@ -37,7 +37,7 @@ function AddPurchase(props) {
 
     // Update partiesNameList when partiesDetails is updated
     useEffect(() => {
-        if (vendorDetails && vendorDetails.length > 0) {
+        if (partiesDetails && partiesDetails.length > 0) {
             const updatedPartyList = partiesDetails.map(party => ({
                 label: party.shop_name,
                 value: party.shop_name
@@ -110,7 +110,36 @@ function AddPurchase(props) {
         return hasUniqueDesignNo && allDesignNosFilled && allQuantitiesValid &&  party;
     };
 
-    // Handle Save
+};
+
+return (
+    <div className='h-full w-full flex flex-col items-center justify-center p-3 overflow-y-scroll'>
+        <div className="mb-4">
+            <h1 className="text-2xl font-bold text-gray-800">Add New Purchase</h1>
+            <p className="text-gray-600">Fill out the details to add a new Purchase.</p>
+        </div>
+
+        {/* Party Information Section */}
+        <div className='h-[40%] bg-gray-400 w-full p-6 '>
+            <label htmlFor="party_name" className="block text-sm font-semibold  mb-1">Party Name</label>
+            <Select options={partiesNameList} onChange={handlePartyNameChange} />
+            {partyDetails && (
+                <div className="mt-4">
+                    <p><strong>Address:</strong> {partyDetails.address}</p>
+                    <p><strong>GST Number:</strong> {partyDetails.gst}</p>
+                    <p><strong>Mobile:</strong> {partyDetails.mobile}</p>
+                </div>
+            )}
+            <strong>Date:</strong>{date}
+        </div>
+
+        {/* Order Items Section */}
+        <div className=' bg-white w-full p-6'>
+            <table className="w-full table-auto border-collapse">
+                <thead>
+                <tr>
+                    <th className="border bg-sec text-pri p-2">Sr No</th>
+                    // Handle Save
     const handleSave =async () => {
         if (validateOrderItems()) {
 
@@ -140,36 +169,7 @@ function AddPurchase(props) {
             setError('Validation failed! Ensure unique Design Nos, valid quantities, and all items in stock.');
             setSuccessMessage('')
         }
-    };
-
-    return (
-        <div className='h-full w-full flex flex-col items-center justify-center p-3 overflow-y-scroll'>
-            <div className="mb-4">
-                <h1 className="text-2xl font-bold text-gray-800">Add New Purchase</h1>
-                <p className="text-gray-600">Fill out the details to add a new Purchase.</p>
-            </div>
-
-            {/* Party Information Section */}
-            <div className='h-[40%] bg-gray-400 w-full p-6 '>
-                <label htmlFor="party_name" className="block text-sm font-semibold  mb-1">Party Name</label>
-                <Select options={partiesNameList} onChange={handlePartyNameChange} />
-                {partyDetails && (
-                    <div className="mt-4">
-                        <p><strong>Address:</strong> {partyDetails.address}</p>
-                        <p><strong>GST Number:</strong> {partyDetails.gst}</p>
-                        <p><strong>Mobile:</strong> {partyDetails.mobile}</p>
-                    </div>
-                )}
-                <strong>Date:</strong>{date}
-            </div>
-
-            {/* Order Items Section */}
-            <div className=' bg-white w-full p-6'>
-                <table className="w-full table-auto border-collapse">
-                    <thead>
-                    <tr>
-                        <th className="border bg-sec text-pri p-2">Sr No</th>
-                        <th className="border bg-sec text-pri p-2">Purchare Items</th>
+                       <th className="border bg-sec text-pri p-2">Purchare Items</th>
                         <th className="border bg-sec text-pri p-2">Quantity</th>
                         <th className="border bg-sec text-pri p-2">Price</th>
                         <th className="border bg-sec text-pri p-2">Total</th>
