@@ -51,6 +51,7 @@ class VendorView(APIView):
     def post(self, request):
         print(request.data)
         print(request.data.get('contact'))
+        print(request.data.get('email'))
         serializer = VendorSerializer(
             data={'email': request.data.get('email'), 'shop_name': request.data.get('shop_name'),
                   'owner_name': request.data.get('owner_name'),
@@ -83,6 +84,7 @@ class ViewVendorView(APIView):
 
         try:
             vendors = Vendor.objects.filter(email=user_email)
+            print(vendors)
             serializer = VendorSerializer(vendors, many=True)
             print(serializer.data)
             return Response(serializer.data, status=status.HTTP_200_OK)

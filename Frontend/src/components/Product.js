@@ -23,8 +23,8 @@ const ProductForm = (prop) => {
     setSuccessMessage('');
     const formData = new FormData();
     formData.append('email', prop.Email);
-    formData.append('design_no', item_name);
-    formData.append('color', category);
+    formData.append('item_name', item_name);
+    formData.append('category', category);
     formData.append('price', price);
     formData.append('image', imageFile);
 

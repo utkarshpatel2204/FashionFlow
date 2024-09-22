@@ -9,7 +9,7 @@ const AddVendor = (props) => {
     const [GSTNumber, setGSTNumber] = useState('');
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
-    const   [email, setEmail]=useState('')
+    // const   [email, setEmail]=useState('')
 
     const handleAddVendor = async (e) => {
         e.preventDefault();
@@ -22,7 +22,7 @@ const AddVendor = (props) => {
         formData.append('contact', contactNumber);
         formData.append('GST', GSTNumber);
         formData.append('address', address);
-        formData.append('email',email)
+        // formData.append('email',email)
         console.log(formData)
 
         try {
@@ -34,7 +34,7 @@ const AddVendor = (props) => {
                 contact:contactNumber,
                 GST :GSTNumber,
                 address:address,
-                emai:email}, {
+                }, {
                 withCredentials: true,
                 headers: {
                   'Content-Type': 'application/json',
@@ -46,7 +46,6 @@ const AddVendor = (props) => {
             setContactNumber('');
             setAddress('');
             setGSTNumber('');
-            setEmail(''),
             setError('');
         } catch (error) {
            
@@ -59,17 +58,17 @@ const AddVendor = (props) => {
             <div className="bg-gray-200 p-8 rounded-lg shadow-lg">
                 <h1 className="text-3xl font-bold mb-6">Add Vendor</h1>
                 <form onSubmit={handleAddVendor} className="space-y-4">
-                    <div>
-                        <label className="block text-sm font-semibold text-gray-800 mb-1">Email</label>
-                        <input
-                            type="text"
-                            name='email'
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            required
-                            className="w-full p-2 text-sm border border-gray-300 rounded-lg"
-                        />
-                    </div>
+                    {/*<div>*/}
+                    {/*    <label className="block text-sm font-semibold text-gray-800 mb-1">Email</label>*/}
+                    {/*    <input*/}
+                    {/*        type="text"*/}
+                    {/*        name='email'*/}
+                    {/*        value={email}*/}
+                    {/*        onChange={(e) => setEmail(e.target.value)}*/}
+                    {/*        required*/}
+                    {/*        className="w-full p-2 text-sm border border-gray-300 rounded-lg"*/}
+                    {/*    />*/}
+                    {/*</div>*/}
                     <div>
                         <label className="block text-sm font-semibold text-gray-800 mb-1">Shop Name:</label>
                         <input

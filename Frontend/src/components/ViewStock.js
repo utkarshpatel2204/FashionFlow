@@ -23,7 +23,7 @@ const ViewStock = (props) => {
         fetchProducts();
     }, [userEmail]);
     const filteredProducts = products.filter((product) =>
-        product.design_no.toLowerCase().includes(searchTerm.toLowerCase())
+        product.item_name.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
     return (
@@ -55,7 +55,7 @@ const ViewStock = (props) => {
                                 <th scope="col" className="py-3 px-4 border-r border-gray-300 text-center">Sr No</th>
                                 <th scope="col" className="py-1 px-2 border-r border-gray-300 text-center">Image</th>
                                 <th scope="col" className="py-1 px-2 border-r border-gray-300 text-center">Item Name</th>
-                                <th scope="col" className="py-1 px-2 border-r border-gray-300 text-center">Cateory</th>
+                                <th scope="col" className="py-1 px-2 border-r border-gray-300 text-center">Category</th>
                                 <th scope="col" className="py-1 px-2 border-r border-gray-300 text-center">Price</th>
                                 <th scope="col" className="py-1 px-2 border-r border-gray-300 text-center">Quantity</th>
                             </tr>

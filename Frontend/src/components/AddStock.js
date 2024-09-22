@@ -19,7 +19,7 @@ const AddStock = (props) => {
     const fetchProductDetails = async (index, item_name) => {
         try {
             const response = await axios.get(`http://localhost:8000/${item_name}/`);
-            const { color, price } = response.data;
+            const { category, price } = response.data;
 
             const newStocks = [...stocks];
             newStocks[index].category = category;
