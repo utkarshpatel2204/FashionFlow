@@ -1,5 +1,5 @@
-from .models import Item, Vendor
-from .serializers import ItemSerializer, VendorSerializer,SellSerializer
+from .models import Item, Vendor,Purchase,Sells
+from .serializers import ItemSerializer, VendorSerializer,SellSerializer,PurchaseSerializer
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -145,3 +145,56 @@ def removeSellItemsFromStock(Sell,user_db_name):
             return Response({'error': 'Design No. not exist'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
     return Response('item updated..', status=status.HTTP_200_OK)
+
+
+
+class AddPurchaseView(APIView):
+    def post(self, request):
+        serializer =PurchaseSerializer(data={'email': request.data.get('email'),'shop_name': request.data.get('shop_name'),
+                                             'vendor_details': request.data.get('vendor_details'),
+                                             'date': request.data.get('date'),
+                                             'purchaseList': request.data.get('purchaseList'),
+                                            'total_price': request.data.get('total_price'),
+                                             })
+
+        if serializer.is_valid():
+
+            try:
+                serializer.save()  # Save to the specific user's database
+                return Response('Purchase updated..', status=status.HTTP_200_OK)
+            except Exception as e:
+                return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class GetPurchaseView(APIView):
+    def get(self, request):
+        user_email = request.query_params.get('email')  # Get user email from query parameters
+        if not user_email:
+            return Response({'error': 'Email is required'}, status=status.HTTP_400_BAD_REQUEST)
+
+        try:
+            data = Purchase.objects.filter(email=user_email)
+            print(data)
+
+            serializer = PurchaseSerializer(data, many=True)
+            print(serializer.data)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        except Exception as e:
+            return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+class GetSellsView(APIView):
+    def get(self, request):
+        user_email = request.query_params.get('email')  # Get user email from query parameters
+        if not user_email:
+            return Response({'error': 'Email is required'}, status=status.HTTP_400_BAD_REQUEST)
+
+        try:
+            data = Sells.objects.filter(email=user_email)
+            print(data)
+            serializer = SellSerializer(data, many=True)
+            print(serializer.data)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        except Exception as e:
+            return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
