@@ -4,8 +4,8 @@ import axios from "axios";
 import Product from './Product'; // Ensure this path is correct
 
 const ProductForm = (prop) => {
-  const [designNo, setDesignNo] = useState('');
-  const [color, setColor] = useState('');
+  const [item_name, setItemName] = useState('');
+  const [category, setCategory] = useState('');
   const [price, setPrice] = useState('');
   const [imageFile, setImageFile] = useState(null);
   const [imageURL, setImageURL] = useState(initialImage);
@@ -23,8 +23,8 @@ const ProductForm = (prop) => {
     setSuccessMessage('');
     const formData = new FormData();
     formData.append('email', prop.Email);
-    formData.append('design_no', designNo);
-    formData.append('color', color);
+    formData.append('item_name', item_name);
+    formData.append('category', category);
     formData.append('price', price);
     formData.append('image', imageFile);
 
@@ -73,30 +73,30 @@ const ProductForm = (prop) => {
             </div>
 
             <div className="mb-4 w-full">
-              <label htmlFor="design_no" className="block text-sm font-semibold text-gray-800 mb-1">Design No:</label>
+              <label htmlFor="design_no" className="block text-sm font-semibold text-gray-800 mb-1">Item Name</label>
               <input
                 type="text"
-                id="design_no"
-                name="design_no"
-                value={designNo}
-                onChange={(e) => setDesignNo(e.target.value)}
+                id="item_name"
+                name="item_name"
+                value={item_name}
+                onChange={(e) => setItemName(e.target.value)}
                 required
-                placeholder='design no'
+                placeholder='Item name'
                 className="w-full p-2 text-sm border border-gray-300 rounded-lg"
               />
             </div>
 
             <div className="flex justify-between gap-5 mb-4">
               <div className="w-1/2">
-                <label htmlFor="color" className="block text-sm font-semibold text-gray-800 mb-1">Color:</label>
+                <label htmlFor="color" className="block text-sm font-semibold text-gray-800 mb-1">Category</label>
                 <input
                   type="text"
-                  id="color"
-                  name="color"
-                  value={color}
-                  onChange={(e) => setColor(e.target.value)}
+                  id="category"
+                  name="category"
+                  value={category}
+                  onChange={(e) => setCategory(e.target.value)}
                   required
-                  placeholder='no. of colors'
+                  placeholder='Category'
                   className="w-full p-2 text-sm border border-gray-300 rounded-lg"
                 />
               </div>
