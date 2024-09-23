@@ -27,7 +27,7 @@ function OrderHistory(props) {
     }, [userEmail]);
 
     const handleCardClick = (Id) => {
-        navigate(`/dashboard/orderHistory/${Id}`);
+        navigate(`/dashboard/sellsHistory/${Id}`);
     };
 
     return (
@@ -52,7 +52,7 @@ function OrderHistory(props) {
                         orderHistory.map((order, index) => (
                             <tr
                                 key={index}
-                                onClick={() => handleCardClick(order._id)}
+                                onClick={() => handleCardClick(order.id)}
                                 className="cursor-pointer hover:bg-gray-100 transition-colors"
                             >
                                 <td className="border-b p-3 text-center">{index+1}</td>

@@ -85,5 +85,4 @@ function OrderDetail(props) {
         </div>
     );
 }
-
 export default OrderDetail;
