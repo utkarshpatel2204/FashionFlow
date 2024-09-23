@@ -25,7 +25,6 @@ const VendorsHistory = (props) => {
                 console.error('Error fetching vendors:', error);
             }
         };
-
         fetchVendors();
     }, [userEmail]);
 
@@ -80,7 +79,7 @@ const VendorsHistory = (props) => {
                     onFocus={() => setShowDropdown(true)} // Show dropdown when input is focused
                     ref={inputRef} // Set ref for input field
                     className="form-input h-10 rounded border border-gray-300 px-4 w-full"
-                    placeholder="Enter shop name"
+                    placeholder="enter shop name"
                 />
                 
                 {/* Dropdown for shop name suggestions */}
@@ -110,7 +109,6 @@ const VendorsHistory = (props) => {
                         <tr>
                             <th scope="col" className="py-3 px-4 border-r border-gray-300 text-center">Shop Name</th>
                             <th scope="col" className="py-3 px-4 border-r border-gray-300 text-center">Owner Name</th>
-                            <th scope="col" className="py-3 px-4 border-r border-gray-300 text-center">Email</th>
                             <th scope="col" className="py-3 px-4 border-r border-gray-300 text-center">Contact Number
                             </th>
                             <th scope="col" className="py-3 px-4 border-r border-gray-300 text-center">GST Number</th>
@@ -124,7 +122,6 @@ const VendorsHistory = (props) => {
                                         className="hover:bg-gray-200 transition duration-300 ease-in-out">
                                         <td className="py-3 px-4 text-center border-r border-gray-300">{vendor.shop_name}</td>
                                         <td className="py-3 px-4 text-center border-r border-gray-300">{vendor.owner_name}</td>
-                                        <td className="py-3 px-4 text-center border-r border-gray-300">{vendor.email}</td>
                                         <td className="py-3 px-4 text-center border-r border-gray-300">{vendor.contact}</td>
                                         <td className="py-3 px-4 text-center border-r border-gray-300">{vendor.GST}</td>
                                         <td className="py-3 px-4 text-center">{vendor.address}</td>
