@@ -96,7 +96,7 @@ const ProductForm = (prop) => {
                   value={category}
                   onChange={(e) => setCategory(e.target.value)}
                   required
-                  placeholder='Category'
+                  placeholder='Enter Category'
                   className="w-full p-2 text-sm border border-gray-300 rounded-lg"
                 />
               </div>
@@ -111,7 +111,7 @@ const ProductForm = (prop) => {
                   value={price}
                   onChange={(e) => setPrice(e.target.value)}
                   required
-                  placeholder='enter price'
+                  placeholder='Enter price'
                   className="w-full p-2 text-sm border border-gray-300 rounded-lg"
                 />
               </div>

@@ -31,14 +31,14 @@ const ViewStock = (props) => {
             <div className="flex justify-between items-center mb-4">
                 <h1 className="text-left text-4xl font-bold">Stock List</h1>
                 <div className="flex items-center">
-                    <label htmlFor="designNo" className="mr-2">item_name</label>
+                    <label htmlFor="item_name" className="mr-2">item_name</label>
                     <input 
                         type="text" 
                         id="item_name"
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
                         className="form-input h-10 rounded border border-gray-300 px-4 mr-2" 
-                        placeholder="Design No"
+                        placeholder="enter item name"
                     />
                 </div>
             </div>

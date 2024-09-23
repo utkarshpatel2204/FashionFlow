@@ -64,12 +64,12 @@ const AddStock = (prop) => {
                     {/* Total Set Input */}
                     <div className="space-y-5">
                         <label htmlFor="total_set" className="block text-sm font-semibold text-[#3A0A3E] mb-1">
-                            Total Set
+                            Quantity
                         </label>
                         <input
                             type="text"
-                            id="total_set"
-                            name="total_set"
+                            id="total_quantity"
+                            name="total_quantity"
                             value={totalquantity}
                             onChange={(e) => settotalquantity(parseInt(e.target.value))}
                             className="w-full border border-gray-300 p-2 rounded bg-[#F8F8FC]"

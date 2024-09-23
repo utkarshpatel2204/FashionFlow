@@ -426,7 +426,7 @@ function Purchase(props) {
             {/* Party Information Section */}
             <div className='w-full bg-gray-100 p-6 rounded-md shadow-md mb-4'>
                 <div className="mb-4">
-                    <label htmlFor="shop_name" className="block text-lg font-semibold mb-2">Party Name</label>
+                    <label htmlFor="shop_name" className="block text-lg font-semibold mb-2">Shop Name</label>
                     <Select options={vendorNameList} onChange={handlevendorNameChange} className="w-full" />
 
 

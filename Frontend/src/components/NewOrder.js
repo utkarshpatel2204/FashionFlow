@@ -16,6 +16,7 @@ function NewOrder(props) {
     const [vendorNameList, setvendorNameList] = useState([]);
     const [itemDetails, setitemDetails] = useState([]);
     const [itemNameList, setitemNameList] = useState([]);
+    const [categoryList, setCategoryList] = useState([]);
     const [error, setError] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
     const [date, setDate] = useState(new Date().toLocaleString())
@@ -62,6 +63,12 @@ function NewOrder(props) {
                 value: product.item_name
             }));
             setitemNameList(updatedDesignList);
+
+        const updatedCategoryList = [...new Set(itemDetails.map(item => item.category))].map(category => ({
+                label: category,
+                value: category,
+            }));
+            setCategoryList(updatedCategoryList); // Update category list with unique categories
         }
     }, [itemDetails]);
 
@@ -97,6 +104,9 @@ function NewOrder(props) {
             updatedOrderItems[index].price = selectedProduct ? selectedProduct.price : 0;
             updatedOrderItems[index].category = selectedProduct ? selectedProduct.category : '';
             updatedOrderItems[index].status = updatedOrderItems[index].quantity > selectedProduct?.total_quantity ? 'Not in Stock' : 'In Stock';
+        }
+        if (field === 'category') {
+            updatedOrderItems[index].category = value;
         }
 
         if (field === 'quantity') {
@@ -168,7 +178,7 @@ function NewOrder(props) {
             {/* Party Information Section */}
             <div className='w-full bg-gray-100 p-6 rounded-md shadow-md mb-4'>
                 <div className="mb-4">
-                    <label htmlFor="shop_name" className="block text-lg font-semibold mb-2">Party Name</label>
+                    <label htmlFor="shop_name" className="block text-lg font-semibold mb-2">Shop Name</label>
                     <Select options={vendorNameList} onChange={handlevendorNameChange} className="w-full" />
 
 
@@ -193,7 +203,7 @@ function NewOrder(props) {
                         <th className="border p-3">Sr No</th>
                         <th className="border p-3">Item Name</th>
                         <th className="border p-3">Quantity</th>
-                        <th className="border p-3">category</th>
+                        <th className="border p-3">Category</th>
 
                         <th className="border p-3">Price</th>
                         <th className="border p-3">Total</th>
@@ -217,7 +227,9 @@ function NewOrder(props) {
                                     onChange={e => handleRowChange(index, 'quantity', e.target.value)}
                                 />
                             </td>
-                            <td className="border p-3">{row.category}</td>
+                            <td className="border p-3">
+                               <Select options={categoryList} onChange={e => handleRowChange(index, 'category', e.value)} />
+                            </td>
                             <td className="border p-3">{row.price}</td>
                             <td className="border p-3">{row.total_price}</td>
                             <td className="border p-3">

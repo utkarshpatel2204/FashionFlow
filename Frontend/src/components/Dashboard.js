@@ -9,6 +9,8 @@ import VendorsHist from './VendorsHist';
 import NewOrder from './NewOrder';
 import AddStock from './AddStock';
 import Purchase from "./Purchase";
+import OrderHistory from "./OrderHistory";
+import PurchaseHistory from "./PurchaseHistory";
 
 
 const Dashboard = () => {
@@ -57,12 +59,12 @@ const Dashboard = () => {
     return (
         <div className="flex h-screen overflow-hidden font-serif">
             <div className="w-64 bg-gray-800 text-white h-full fixed top-0 left-0 overflow-y-auto pt-5 flex flex-col justify-between">
-                <h2 className="mb-5 text-3xl text-center">TeeStockPro</h2>
+                <h2 className="mb-5 text-3xl text-center">FashionFlow</h2>
                 <hr className="border-t border-gray-600 mb-5" />
                 <ul className="p-0 m-0 flex-grow">
                 <li className="relative my-2 p-2 cursor-pointer"    >
                         <a className="text-gray-300 no-underline text-lg block pr-8 font-bold" onClick={() => setActiveContent(<Content Email={email} />)}>Home</a>
-                        
+
                     </li>
                     <li className="relative my-2 p-2 cursor-pointer" onClick={() => toggleDropdown(0)}>
                         <a className="text-gray-300 no-underline text-lg block pr-8 font-bold">Stocks</a>
@@ -100,7 +102,7 @@ const Dashboard = () => {
                                     <button className="text-sm text-gray-300 bg-transparent border-none" onClick={() => setActiveContent(<NewOrder Email={email} />)}>New Order</button>
                                 </li>
                                 <li className="my-2">
-                                    <button className="text-sm text-gray-300 bg-transparent border-none">Order history</button>
+                                    <button className="text-sm text-gray-300 bg-transparent border-none" onClick={() => setActiveContent(<OrderHistory Email={email} />)}>Order history</button>
                                 </li>
                             </ul>
                         )}
@@ -122,7 +124,7 @@ const Dashboard = () => {
                         )}
                     </li>
                     <li className="relative my-2 p-2 cursor-pointer" onClick={() => toggleDropdown(4)}>
-                        <a className="text-gray-300 no-underline text-lg block pr-8 font-bold">Billing</a>
+                        <a className="text-gray-300 no-underline text-lg block pr-8 font-bold">Purchase</a>
                         <span className={`absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-300 text-sm cursor-pointer transition-transform duration-500 ${isDropdownActive(4) ? 'rotate-90' : '-rotate-90'}`}>
                             &#11167;
                         </span>
@@ -130,11 +132,12 @@ const Dashboard = () => {
                             <ul className="list-none p-2 ml-2 bg-gray-800 mt-2">
                                 <li className="my-2">
                                     <button className="text-sm text-gray-300 bg-transparent border-none"
-                                           onClick={() => setActiveContent(<Purchase Email={email}/>)}
-                                    > View Expenses</button>
+                                           onClick={() => setActiveContent(<Purchase Email={email} />)}
+                                    > New Purchase</button>
                                 </li>
                                 <li className="my-2">
-                                    <button className="text-sm text-gray-300 bg-transparent border-none">Add Expense</button>
+                                    <button className="text-sm text-gray-300 bg-transparent border-none"
+                                    onClick={() => setActiveContent(<PurchaseHistory Email={email} />)}>Purchase History</button>
                                 </li>
                             </ul>
                         )}
