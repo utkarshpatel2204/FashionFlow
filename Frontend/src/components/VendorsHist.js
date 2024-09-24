@@ -65,12 +65,12 @@ const VendorsHistory = (props) => {
     }, []);
 
     return (
-        <div className="container mx-auto mt-8">
-            <h1 className="text-4xl font-bold mb-6">Vendor History</h1>
+        <div className="container mx-auto mt-8 bg-[#1B2A41] p-10 rounded-xl">
+            <h1 className="text-4xl font-bold mb-6 text-white">Vendor History</h1>
 
             {/* Search Field */}
             <div className="relative w-full mb-4">
-                <label htmlFor="shop_name" className="mr-2 text-lg font-semibold">Shop Name:</label>
+                <label htmlFor="shop_name" className="mr-2 text-lg font-semibold ">Shop Name:</label>
                 <input
                     type="text"
                     id="shop_name"
@@ -78,7 +78,7 @@ const VendorsHistory = (props) => {
                     onChange={handleInputChange}
                     onFocus={() => setShowDropdown(true)} // Show dropdown when input is focused
                     ref={inputRef} // Set ref for input field
-                    className="form-input h-10 rounded border border-gray-300 px-4 w-full"
+                    className="form-input h-10 rounded border border-gray-300 px-4 w-full bg-[#324A5F]"
                     placeholder="enter shop name"
                 />
                 
@@ -105,7 +105,7 @@ const VendorsHistory = (props) => {
             <div className="overflow-x-auto">
                 <div className="relative max-h-80 overflow-y-scroll">
                     <table className="min-w-full bg-white border border-gray-300 rounded-lg shadow-md">
-                        <thead className="bg-gray-800 text-white sticky top-0 z-10">
+                        <thead className="text-black sticky top-0 z-10 bg-[#CCC9DC]">
                         <tr>
                             <th scope="col" className="py-3 px-4 border-r border-gray-300 text-center">Shop Name</th>
                             <th scope="col" className="py-3 px-4 border-r border-gray-300 text-center">Owner Name</th>
@@ -115,7 +115,7 @@ const VendorsHistory = (props) => {
                             <th scope="col" className="py-3 px-4 text-center">Address</th>
                         </tr>
                         </thead>
-                        <tbody className="divide-y divide-gray-300">
+                        <tbody className="divide-y bg-[#324A5F] text-white">
                             {filteredVendors.length > 0 ? (
                                 filteredVendors.map((vendor) => (
                                     <tr key={vendor.id}

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const ViewStock = (props) => {
+const ViewItemStock = (props) => {
     const [products, setProducts] = useState([]);
     const [error, setError] = useState('');
     const [searchTerm, setSearchTerm] = useState('');
@@ -27,17 +27,17 @@ const ViewStock = (props) => {
     );
 
     return (
-        <div className="container mx-auto mt-25"> 
+        <div className="container mx-auto mt-2 bg-[#1B2A41] text-white p-10 rounded-xl h-screen ">
             <div className="flex justify-between items-center mb-4">
-                <h1 className="text-left text-4xl font-bold">Stock List</h1>
-                <div className="flex items-center">
-                    <label htmlFor="item_name" className="mr-2">item_name</label>
+                <h1 className="text-white text-4xl font-bold">Stock List</h1>
+                <div className="flex items-center bg-[#1B2A41]">
+                    <label htmlFor="item_name" className="mr-2">Item name</label>
                     <input 
                         type="text" 
                         id="item_name"
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
-                        className="form-input h-10 rounded border border-gray-300 px-4 mr-2" 
+                        className="form-input h-10 rounded border border-gray-300 px-4 mr-2 bg-[#324A5F]"
                         placeholder="enter item name"
                     />
                 </div>
@@ -47,10 +47,10 @@ const ViewStock = (props) => {
             {error && <p className="text-red-500 text-center">{error}</p>}
 
             
-            <div className="overflow-x-auto">
-                <div className="relative max-h-80 overflow-y-scroll"> 
-                    <table className="min-w-full bg-white border border-gray-300 rounded-lg shadow-md">
-                        <thead className="bg-gray-800 text-white sticky top-0 z-10">
+            <div className="overflow-x-auto h-[80%] pb-3">
+                <div className="relative">
+                    <table className="min-w-full bg-[#1B2A41] border border-gray-300 rounded-lg shadow-md ">
+                        <thead className="bg-[#CCC9DC] text-black sticky top-0 z-10">
                             <tr>
                                 <th scope="col" className="py-3 px-4 border-r border-gray-300 text-center">Sr No</th>
                                 <th scope="col" className="py-1 px-2 border-r border-gray-300 text-center">Image</th>
@@ -62,7 +62,7 @@ const ViewStock = (props) => {
                         </thead>
                         <tbody className="divide-y divide-gray-300">
                             {filteredProducts.map((product,index) => (
-                                <tr key={product.id} className="hover:bg-gray-200 transition duration-300 ease-in-out">
+                                <tr key={product.id} className="hover:bg-[#324A5F] bg-[#324A5F] transition duration-300 ease-in-out">
                                      <td className="py-3 px-4 text-center border-r border-gray-300">{index + 1}</td>
                                     <td className="py-3 px-4 text-center border-r border-gray-300">
                                         <img 
@@ -88,4 +88,4 @@ const ViewStock = (props) => {
     );
 };
 
-export default ViewStock;
+export default ViewItemStock;

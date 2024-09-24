@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import initialImage from './initial.png';
+import initialImage from './DefaultImg.png';
 import axios from "axios";
-import Product from './Product'; // Ensure this path is correct
+import Product from './AddItems'; // Ensure this path is correct
 
 const ProductForm = (prop) => {
   const [item_name, setItemName] = useState('');
@@ -48,12 +48,12 @@ const ProductForm = (prop) => {
   };
 
   return (
-    <div className='min-h-full w-full bg-white font-serif'>
-      <div className="flex h-full w-full bg-white p-2">
-        <div className='w-full h-full flex justify-center items-center bg-white p-30'>
-          <form onSubmit={handleSubmit} className="w-11/12 h-4/5 p-10 bg-gray-200 rounded-lg shadow-lg">
+    <div className='min-h-full w-full bg-[#CCC9DC] font-serif text-white'>
+      <div className="flex h-full w-full  p-2">
+        <div className='w-full h-full flex justify-center items-center p-30'>
+          <form onSubmit={handleSubmit} className="w-11/12 h-4/5 p-10 bg-[#1B2A41] rounded-lg shadow-lg">
             <div className="flex items-center gap-12 mb-5">
-              <div className="w-50 h-48 ml-5 border-2 border-white bg-gray-100 shadow-md">
+              <div className="w-50 h-48 ml-5 border-2 border-white  shadow-md">
                 <img src={imageURL} alt="Selected or Initial" className="h-full w-full object-contain" />
               </div>
               <input
@@ -68,12 +68,12 @@ const ProductForm = (prop) => {
                   setImageURL(url);
                 }}
                 required
-                className="flex flex-col w-1/2 mt-20"
+                className="flex flex-col w-1/2 mt-20 bg-[#324A5F]"
               />
             </div>
 
             <div className="mb-4 w-full">
-              <label htmlFor="design_no" className="block text-sm font-semibold text-gray-800 mb-1">Item Name</label>
+              <label htmlFor="item_name" className="block text-sm font-semibold text-gray-800 mb-1">Item Name</label>
               <input
                 type="text"
                 id="item_name"
@@ -82,7 +82,7 @@ const ProductForm = (prop) => {
                 onChange={(e) => setItemName(e.target.value)}
                 required
                 placeholder='Item name'
-                className="w-full p-2 text-sm border border-gray-300 rounded-lg"
+                className="w-full p-2 text-sm border border-gray-300 rounded-lg bg-[#324A5F]"
               />
             </div>
 
@@ -97,7 +97,7 @@ const ProductForm = (prop) => {
                   onChange={(e) => setCategory(e.target.value)}
                   required
                   placeholder='Enter Category'
-                  className="w-full p-2 text-sm border border-gray-300 rounded-lg"
+                  className="w-full p-2 text-sm border border-gray-300 rounded-lg bg-[#324A5F]"
                 />
               </div>
 
@@ -112,7 +112,7 @@ const ProductForm = (prop) => {
                   onChange={(e) => setPrice(e.target.value)}
                   required
                   placeholder='Enter price'
-                  className="w-full p-2 text-sm border border-gray-300 rounded-lg"
+                  className="w-full p-2 text-sm border border-gray-300 rounded-lg bg-[#324A5F]"
                 />
               </div>
             </div>
@@ -121,7 +121,7 @@ const ProductForm = (prop) => {
             {error && <div className="text-red-600 font-bold text-center mb-4">{error}</div>}
 
             <div className="flex justify-end mt-5">
-              <button type="submit" className="py-1 px-11 text-white bg-gray-700 rounded-lg hover:bg-teal-500 transition duration-300">
+              <button type="submit" className="py-1 px-11 text-black bg-[#CCC9DC] rounded-lg hover:bg-teal-500 transition duration-300">
                 Save
               </button>
             </div>

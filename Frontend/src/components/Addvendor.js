@@ -54,8 +54,8 @@ const AddVendor = (props) => {
     };
 
     return (
-        <div className="container mx-auto mt-8">
-            <div className="bg-gray-200 p-8 rounded-lg shadow-lg">
+        <div className="container mx-auto mt-8 bg-[#1B2A41]">
+            <div className=" p-8 rounded-lg shadow-lg text-white">
                 <h1 className="text-3xl font-bold mb-6">Add Vendor</h1>
                 <form onSubmit={handleAddVendor} className="space-y-4">
                     {/*<div>*/}
@@ -70,70 +70,70 @@ const AddVendor = (props) => {
                     {/*    />*/}
                     {/*</div>*/}
                     <div>
-                        <label className="block text-sm font-semibold text-gray-800 mb-1">Shop Name:</label>
+                        <label className="block text-sm font-semibold text-white mb-1">Shop Name:</label>
                         <input
                             type="text"
                             name='shop_name'
                             value={shopName}
                             onChange={(e) => setShopName(e.target.value)}
                             required
-                            className="w-full p-2 text-sm border border-gray-300 rounded-lg"
+                            className="w-full p-2 text-sm border border-gray-300 rounded-lg bg-[#324A5F]"
                         />
                     </div>
 
                     <div>
-                        <label className="block text-sm font-semibold text-gray-800 mb-1">Owner Name:</label>
+                        <label className="block text-sm font-semibold text-white mb-1">Owner Name:</label>
                         <input
                             type="text"
                             name='owner_name'
                             value={ownerName}
                             onChange={(e) => setOwnerName(e.target.value)}
                             required
-                            className="w-full p-2 text-sm border border-gray-300 rounded-lg"
+                            className="w-full p-2 text-sm border rounded-lg bg-[#324A5F]"
                         />
                     </div>
 
                     <div className="flex justify-between gap-5 mb-4">
                         <div className='w-1/2'>
-                            <label className="block text-sm font-semibold text-gray-800 mb-1">Contact Number:</label>
+                            <label className="block text-sm font-semibold text-white mb-1">Contact Number:</label>
                             <input
                                 type="text"
                                 name='contact'
                                 value={contactNumber}
                                 onChange={(e) => setContactNumber(e.target.value)}
                                 required
-                                className="w-full p-2 text-sm border border-gray-300 rounded-lg"
+                                className="w-full p-2 text-sm border border-gray-300 rounded-lg bg-[#324A5F]"
                             />
                         </div>
 
                         <div className='w-1/2'>
-                            <label className="block text-sm font-semibold text-gray-800 mb-1">GST Number:</label>
+                            <label className="block text-sm font-semibold text-white mb-1">GST Number:</label>
                             <input
                                 type="text"
                                 name='GST'
                                 value={GSTNumber}
                                 onChange={(e) => setGSTNumber(e.target.value)}
                                 required
-                                className="w-full p-2 text-sm border border-gray-300 rounded-lg"
+                                className="w-full p-2 text-sm border border-gray-300 rounded-lg bg-[#324A5F]"
                             />
                         </div>
                     </div>
 
                     <div>
-                        <label className="block text-sm font-semibold text-gray-800 mb-1">Address:</label>
+                        <label className="block text-sm font-semibold text-white mb-1 ">Address:</label>
                         <input
                             type="text"
                             name='address'
                             value={address}
                             onChange={(e) => setAddress(e.target.value)}
                             required
-                            className="w-full p-2 text-sm border border-gray-300 rounded-lg"
+                            className="w-full p-2 text-sm border border-gray-300 rounded-lg bg-[#324A5F]"
                         />
                     </div>
 
                     <div className="flex justify-end mt-5">
                         <button type="submit"
-                                className="py-1 px-11 text-white bg-gray-700 rounded-lg hover:bg-teal-500 transition duration-300">
+                                className="py-1 px-11 text-white bg-[#CCC9DC] rounded-lg hover:bg-green-400 transition duration-300">
                             Save
                         </button>
                     </div>

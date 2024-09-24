@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Select from 'react-select';
 import axios from 'axios';
 
-function NewOrder(props) {
+function NewSells(props) {
     const userEmail = props.Email;
 
     const [vendorsDetails, setvendorsDetails] = useState([]);
@@ -167,39 +167,37 @@ function NewOrder(props) {
     };
 
     return (
-        <div className='h-full w-full flex flex-col items-center justify-center p-3 '>
+        <div className='w-full flex flex-col items-center justify-center p-3 bg-[#1B2A41] overflow-y-scroll'>
             <div className="mb-8 text-center">
-                <h1 className="text-3xl font-bold text-gray-800 mb-2">Add New Order</h1>
-                <p className="text-gray-600 text-lg">Fill out the details to add a new order.</p>
+                <h1 className="text-3xl font-bold text-white mb-2">Add New Sells</h1>
+                <p className="text-gray-400 text-lg">Fill out the details to add a new Sells.</p>
 
 
             </div>
 
             {/* Party Information Section */}
-            <div className='w-full bg-gray-100 p-6 rounded-md shadow-md mb-4'>
-                <div className="mb-4">
+            <div className='w-full p-6 rounded-md shadow-md mb-4 '>
+                <div className="mb-4 ">
                     <label htmlFor="shop_name" className="block text-lg font-semibold mb-2">Shop Name</label>
-                    <Select options={vendorNameList} onChange={handlevendorNameChange} className="w-full" />
-
-
+                    <Select options={vendorNameList} onChange={handlevendorNameChange} className="w-full bg-[#324A5F]" />
                 </div>
 
                 {vendorDetails && (
-                    <div className="border-t border-gray-200 pt-4 mt-4">
-                        <p className="text-gray-700"><strong>Owner Name:</strong> {vendorDetails.owner_name}</p>
-                        <p className="text-gray-700"><strong>Address:</strong> {vendorDetails.address}</p>
-                        <p className="text-gray-700"><strong>GST Number:</strong> {vendorDetails.GST}</p>
-                        <p className="text-gray-700"><strong>Mobile:</strong> {vendorDetails.contact}</p>
+                    <div className="border-t border-gray-200 pt-4 mt-4 text-white">
+                        <p className=""><strong>Owner Name:</strong> {vendorDetails.owner_name}</p>
+                        <p className=""><strong>Address:</strong> {vendorDetails.address}</p>
+                        <p className=""><strong>GST Number:</strong> {vendorDetails.GST}</p>
+                        <p className=""><strong>Mobile:</strong> {vendorDetails.contact}</p>
                     </div>
                 )}
-                <p className="mt-4 text-gray-600"><strong>Date:</strong> {date}</p>
+                <p className="mt-4 text-white"><strong>Date:</strong> {date}</p>
             </div>
 
             {/* Order Items Section */}
-            <div className='w-full bg-white p-6 rounded-md shadow-md '>
-                <table className="w-full table-auto border-collapse">
-                    <thead>
-                    <tr className="bg-gray-100 text-left">
+            <div className='w-full p-6 rounded-md shadow-md bg-[#324A5F]'>
+                <table className="w-full table-auto border-collapse bg-[#324A5F]">
+                    <thead className="bg-[#CCC9DC] text-black">
+                    <tr className="bg-[#CCC9DC]">
                         <th className="border p-3">Sr No</th>
                         <th className="border p-3">Item Name</th>
                         <th className="border p-3">Quantity</th>
@@ -213,9 +211,9 @@ function NewOrder(props) {
                     </thead>
                     <tbody>
                     {orderItems.map((row, index) => (
-                        <tr key={index}>
+                        <tr key={index} className="text-white">
                             <td className="border p-3">{row.srNo}</td>
-                            <td className="border p-3">
+                            <td className="border p-3 text-black">
                                 <Select options={itemNameList} onChange={e => handleRowChange(index, 'item_name', e.value)} />
                             </td>
                             <td className="border p-3">
@@ -223,12 +221,12 @@ function NewOrder(props) {
                                     type="number"
                                     value={row.quantity}
                                     min={0}
-                                    className="w-full border rounded px-3 py-1"
+                                    className="w-full border rounded px-3 py-1 bg-[#324A5F]"
                                     onChange={e => handleRowChange(index, 'quantity', e.target.value)}
                                 />
                             </td>
-                            <td className="border p-3">
-                               <Select options={categoryList} onChange={e => handleRowChange(index, 'category', e.value)} />
+                            <td className="border p-3 text-black">
+                               <Select  className="bg-[#324A5F]" options={categoryList} onChange={e => handleRowChange(index, 'category', e.value)} />
                             </td>
                             <td className="border p-3">{row.price}</td>
                             <td className="border p-3">{row.total_price}</td>
@@ -252,12 +250,12 @@ function NewOrder(props) {
                 </button>
 
                 <div className="mt-6 flex justify-between items-center">
-                    <h2 className="text-xl font-semibold text-gray-700">Total Price: ₹{totalPrice}</h2>
+                    <h2 className="text-xl font-semibold text-white">Total Price: ₹{totalPrice}</h2>
                     <button
                         onClick={handleSave}
-                        className="py-2 px-6 bg-green-500 text-white rounded-lg hover:bg-green-800 transition duration-300"
+                        className="py-2 px-6 bg-[#CCC9DC] text-black rounded-lg hover:bg-green-800 transition duration-300"
                     >
-                        Save Order
+                        Save Sells List
                     </button>
                 </div>
             </div>
@@ -269,4 +267,4 @@ function NewOrder(props) {
     );
 }
 
-export default  NewOrder;
+export default  NewSells;

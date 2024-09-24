@@ -1,30 +1,24 @@
 import React from 'react';
 import axios from "axios";
-import {useState} from "react";
-import {useEffect} from "react";
-import { Line } from 'react-chartjs-2';
+import { useState, useEffect } from "react";
+import { Bar } from 'react-chartjs-2';
 import {
     Chart as ChartJS,
     CategoryScale,
     LinearScale,
-    PointElement,
-    LineElement,
+    BarElement,
     Title,
     Tooltip,
     Legend,
 } from 'chart.js';
 
-// Register chart elements
-ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
+// SignUp chart elements
+ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
-
-
-const Home = (props) => {
+const Content = (props) => {
     const [orderHistory, setOrderHistory] = useState([]);
     const [purchaseHistory, setPurchaseHistory] = useState([]);
     const [error, setError] = useState('');
-
-
 
     useEffect(() => {
         const fetchOrderHistory = async () => {
@@ -32,7 +26,6 @@ const Home = (props) => {
                 const response = await axios.get(`http://localhost:8000/stock/getsells/?email=${props.Email}`, {
                     withCredentials: true,
                 });
-                console.log(response.data);
                 const sortedData = response.data.sort((a, b) => new Date(a.date) - new Date(b.date));
                 setOrderHistory(sortedData);
             } catch (error) {
@@ -44,7 +37,6 @@ const Home = (props) => {
         fetchOrderHistory();
     }, [props.Email]);
 
-
     useEffect(() => {
         const fetchPurchaseHistory = async () => {
             try {
@@ -53,29 +45,28 @@ const Home = (props) => {
                 });
                 setPurchaseHistory(response.data);
             } catch (error) {
-                console.error('Error fetching order history:', error);
-                setError('Error fetching order history.');
+                console.error('Error fetching purchase history:', error);
+                setError('Error fetching purchase history.');
             }
         };
 
         fetchPurchaseHistory();
     }, [props.Email]);
 
-    const uniqueDates = Array.from(new Set(orderHistory.map(order => new Date(order.date).toLocaleDateString()))).sort((a, b ) => new Date(a) - new Date(b));
+    const uniqueDates = Array.from(new Set(orderHistory.map(order => new Date(order.date).toLocaleDateString()))).sort((a, b) => new Date(a) - new Date(b));
 
     const chartData = {
-        labels:uniqueDates,
+        labels: uniqueDates,
         datasets: [
             {
-                label: 'Purchase',
+                label: 'Purchases',
                 data: uniqueDates.map(date => {
                     const purchase = purchaseHistory.find(p => new Date(p.date).toLocaleDateString() === date);
                     return purchase ? parseFloat(purchase.total_price) : 0;
                 }),
-                borderColor: 'rgba(255, 99, 132, 1)',
-                backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                fill: true,
-                tension: 0.4,
+                backgroundColor: '#FFFFFF', // Color for Purchases
+                borderColor: '#1B2A41',
+                borderWidth: 1,
             },
             {
                 label: 'Revenue',
@@ -83,10 +74,9 @@ const Home = (props) => {
                     const order = orderHistory.find(o => new Date(o.date).toLocaleDateString() === date);
                     return order ? parseFloat(order.total_price) : 0;
                 }),
-                borderColor: 'rgba(54, 162, 235, 1)',
-                backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                fill: true,
-                tension: 0.4,
+                backgroundColor: '#FF6F61', // Color for Revenue
+                borderColor: '#1B2A41',
+                borderWidth: 1,
             },
         ],
     };
@@ -96,47 +86,49 @@ const Home = (props) => {
         plugins: {
             legend: {
                 position: 'top',
+                labels: {
+                    color: '#FFFFFF', // Adjust legend text color
+                },
             },
             title: {
                 display: true,
                 text: 'Earnings Overview',
+                color: '#FFFFFF', // Adjust title color
             },
         },
     };
 
     const totalRevenue = orderHistory.reduce((sum, order) => {
-        const price = parseFloat(order.total_price); // Convert total_price string to number
-        return sum + (isNaN(price) ? 0 : price); // Ensure valid number
+        const price = parseFloat(order.total_price);
+        return sum + (isNaN(price) ? 0 : price);
     }, 0);
     const totalPurchase = purchaseHistory.reduce((total, purchase) => total + (parseFloat(purchase.total_price) || 0), 0);
     const profit = totalRevenue - totalPurchase;
 
-
-
     return (
-        <div className="flex flex-col    items-center text-gray-800  ml-[15%]">
+        <div className="flex gap-[2%] rounded-xl shadow-lg items-center bg-[#1B2A41] w-full" style={{ minHeight: '80vh', padding: '100px' }}>
             {/* Stat Boxes */}
-            <div className="flex justify-around w-full mb-8">
-                <div className="bg-gray-800 rounded-lg p-5 w-48 text-center text-white m-8 shadow-lg">
+            <div className="flex flex-col justify-around w-full mb-8 gap-6">
+                <div className="bg-[#324A5F] rounded-lg p-5 w-48 text-center text-white shadow-lg transform transition-all hover:scale-105">
                     <h3 className="text-lg font-semibold">Revenue</h3>
                     <p className="text-xl">₹ {totalRevenue.toFixed(2)}</p>
                 </div>
-                <div className="bg-gray-800 rounded-lg p-5 w-48 text-center text-white m-8 shadow-lg">
-                    <h3 className="text-lg font-semibold">Purchase</h3>
+                <div className="bg-[#324A5F] rounded-lg p-5 w-48 text-center text-white shadow-lg transform transition-all hover:scale-105">
+                    <h3 className="text-lg font-semibold">Purchases</h3>
                     <p className="text-xl">₹ {totalPurchase.toFixed(2)}</p>
                 </div>
-                <div className="bg-gray-800 rounded-lg p-5 w-48 text-center text-white m-8 shadow-lg">
+                <div className="bg-[#324A5F] rounded-lg p-5 w-48 text-center text-white shadow-lg transform transition-all hover:scale-105">
                     <h3 className="text-lg font-semibold">Profit</h3>
                     <p className="text-xl">₹ {profit.toFixed(2)}</p>
                 </div>
             </div>
 
             {/* Earnings Chart */}
-            <div className="bg-white rounded-lg p-6 w-full md:w-4/5 shadow-lg">
-                <Line data={chartData} options={chartOptions} />
+            <div className="bg-[#324A5F] rounded-lg p-6 w-full md:w-4/5 shadow-lg">
+                <Bar data={chartData} options={chartOptions} />
             </div>
         </div>
     );
 };
 
-export default Home;
+export default Content;

@@ -30,16 +30,16 @@ function PurchaseHistory(props) {
     };
 
     return (
-        <div className="h-full w-full flex flex-col items-center justify-center p-6 overflow-y-auto bg-gray-100">
+        <div className="h-full w-full flex flex-col items-center justify-center p-6 overflow-y-auto bg-[#1B2A41] text-white">
             <div className="mb-6 text-center">
-                <h1 className="text-3xl font-bold text-gray-800 mb-2">Purchase History</h1>
-                <p className="text-gray-500">View all previous purchases below</p>
+                <h1 className="text-3xl font-bold text-white mb-2">Purchase History</h1>
+                <p className="text-gray-400">View all previous purchases below</p>
             </div>
 
             {/* Purchase History Table */}
-            <div className='bg-white w-full shadow-md rounded-lg overflow-hidden'>
+            <div className='w-full shadow-md rounded-lg overflow-hidden '>
                 <table className="w-full text-left border-collapse">
-                    <thead className="bg-gray-800 text-white">
+                    <thead className="text-black bg-[#CCC9DC] ">
                     <tr>
                         <th className="border-b p-3 text-center">Sr No.</th>
                         <th className="border-b p-3 text-center">Purchase Date</th>
@@ -47,12 +47,12 @@ function PurchaseHistory(props) {
                         <th className="border-b p-3 text-center">Total Price</th>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody className=''>
                     {orderHistory.length > 0 ? (
                         orderHistory.map((order, index) => (
                             <tr key={index}
                             onClick={() => handleCardClick(order._id)}
-                            className="hover:bg-gray-100 transition-colors">
+                            className="hover:bg-gray-100 transition-colors bg-[#324A5F] hover:text-black">
                                  <td className="border-b p-3 text-center">{index+1}</td>
                                 <td className="border-b p-3 text-center">{new Date(order.date).toLocaleDateString()}</td>
                                 <td className="border-b p-3 text-center">{order.shop_name}</td>
