@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const AddStock = (prop) => {
+const AddItemStock = (prop) => {
     const [item_name, setitem_name] = useState('');
     const [totalquantity, settotalquantity] = useState(0);
     const [error, setError] = useState('');
@@ -36,18 +36,18 @@ const AddStock = (prop) => {
     };
 
     return (
-        <div className="bg-[#FFFFFF] p-6 rounded-lg h-full w-full">
+        <div className="bg-[#1B2A41] p-6 rounded-lg h-full w-full">
             <div className="mb-4">
-                <h1 className="text-2xl font-bold text-gray-800">Add New Stock</h1>
-                <p className="text-gray-600">Fill out the details to add new stock.</p>
+                <h1 className="text-2xl font-bold text-white">Add New Stock</h1>
+                <p className="text-gray-400">Fill out the details to add new stock.</p>
             </div>
 
-            <form onSubmit={handleSubmit} className="flex gap-3 mt-5 flex-col">
+            <form onSubmit={handleSubmit} className="flex gap-3 mt-5 flex-col bg-[#1B2A41]">
                 {/* Left side - Form Inputs */}
                 <div className="grid grid-cols-2 gap-10 w-full">
                     {/* Design No. Input */}
                     <div className="space-y-5">
-                        <label htmlFor="design_no" className="block text-sm font-semibold text-[#3A0A3E] mb-1">
+                        <label htmlFor="design_no" className="block text-sm font-semibold text-white mb-1">
                             Item Name
                         </label>
                         <input
@@ -56,7 +56,7 @@ const AddStock = (prop) => {
                             name="item_name"
                             value={item_name}
                             onChange={(e) => setitem_name(e.target.value)}
-                            className="w-full border border-gray-300 p-2 rounded bg-[#F8F8FC]"
+                            className="w-full border border-gray-300 p-2 rounded bg-[#324A5F]"
                             required
                         />
                     </div>
@@ -72,7 +72,7 @@ const AddStock = (prop) => {
                             name="total_quantity"
                             value={totalquantity}
                             onChange={(e) => settotalquantity(parseInt(e.target.value))}
-                            className="w-full border border-gray-300 p-2 rounded bg-[#F8F8FC]"
+                            className="w-full border border-gray-300 p-2 rounded bg-[#324A5F]"
                             required
                         />
                     </div>
@@ -88,7 +88,7 @@ const AddStock = (prop) => {
                 <div className='flex justify-end'>
                     <button
                         type="submit"
-                        className="w-[20%] bg-[#181818] text-white p-2 rounded mt-4 hover:bg-[#E6859E]"
+                        className="w-[20%] bg-[#CCC9DC] text-black p-2 rounded mt-4 hover:bg-[#E6859E]"
                     >
                         Add Stock
                     </button>
@@ -98,4 +98,4 @@ const AddStock = (prop) => {
     );
 };
 
-export default AddStock;
+export default AddItemStock;

@@ -194,6 +194,7 @@ class GetPurchaseView(APIView):
 class GetSellsView(APIView):
     def get(self, request):
         user_email = request.query_params.get('email')  # Get user email from query parameters
+        print(user_email)
         if not user_email:
             return Response({'error': 'Email is required'}, status=status.HTTP_400_BAD_REQUEST)
 

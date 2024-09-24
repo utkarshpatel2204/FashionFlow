@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from "react-router-dom";
 
-const Register = () => {
+const SignUp = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -39,7 +39,7 @@ const Register = () => {
     return (
         <div className="relative flex items-center justify-center h-screen w-full bg-cover bg-center bg-fixed font-serif" style={{ backgroundImage: "url('images/img1.jpeg')" }}>
             <div className="absolute top-0 left-0 right-0 bottom-0 bg-black opacity-80"></div>
-            <div className="relative bg-gray-300 p-10 rounded-lg shadow-lg w-full max-w-md text-center">
+            <div className="relative bg-[#1B2A41] p-10 rounded-lg shadow-lg w-full max-w-md text-center text-white">
                 <form onSubmit={handleRegister}>
                     <h1 className="text-2xl font-bold mb-6">Create an account</h1>
                     <input
@@ -48,7 +48,7 @@ const Register = () => {
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         required
-                        className="w-full p-3 mb-4 border rounded focus:outline-none focus:ring-2 focus:ring-green-500"
+                        className="w-full p-3 mb-4 border rounded focus:outline-none focus:ring-2 focus:ring-green-500 bg-[#324A5F]"
                     />
                     <input
                         type="email"
@@ -56,7 +56,7 @@ const Register = () => {
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         required
-                        className="w-full p-3 mb-4 border rounded focus:outline-none focus:ring-2 focus:ring-green-500"
+                        className="w-full p-3 mb-4 border rounded focus:outline-none focus:ring-2 focus:ring-green-500 bg-[#324A5F]"
                     />
                     <input
                         type="password"
@@ -64,7 +64,7 @@ const Register = () => {
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         required
-                        className="w-full p-3 mb-4 border rounded focus:outline-none focus:ring-2 focus:ring-green-500"
+                        className="w-full p-3 mb-4 border rounded focus:outline-none focus:ring-2 focus:ring-green-500 bg-[#324A5F]"
                     />
                     <input
                         type="password"
@@ -72,11 +72,11 @@ const Register = () => {
                         value={password2}
                         onChange={(e) => setPassword2(e.target.value)}
                         required
-                        className="w-full p-3 mb-4 border rounded focus:outline-none focus:ring-2 focus:ring-green-500"
+                        className="w-full p-3 mb-4 border rounded focus:outline-none focus:ring-2 focus:ring-green-500 bg-[#324A5F]"
                     />
                     <button
                         type="submit"
-                        className="w-full p-3 bg-green-600 text-white rounded hover:bg-green-700 transition-all duration-300"
+                        className="w-full p-3 bg-[#CCC9DC] text-black rounded hover:bg-green-700 transition-all duration-300 "
                     >
                         Register
                     </button>
@@ -84,7 +84,7 @@ const Register = () => {
                     {error && <p className="text-red-600 mt-4">{error}</p>}
                     {success && <p className="text-green-600 mt-4">{success}</p>}
 
-                    <p className="text-sm text-gray-600 mt-6">
+                    <p className="text-sm text-white mt-6">
                         Already have an account? <Link to="/" className="text-blue-600 hover:text-blue-800">Login</Link>
                     </p>
                 </form>
@@ -93,4 +93,4 @@ const Register = () => {
     );
 };
 
-export default Register;
+export default SignUp;

@@ -1,13 +1,13 @@
 // import logo from './logo.svg';
 import './App.css';
-import Main from "./components/Main";
+import MyRoutes from "./components/MyRoutes";
 
 
 function App() {
 // const Uemail=useContext(UserEmailContext);
   return (
         <div className='root'>
-            <Main/>
+            <MyRoutes/>
         </div>
 
   );

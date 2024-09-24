@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-function OrderHistory(props) {
+function SellsHistory(props) {
     const userEmail = props.Email;
     const [orderHistory, setOrderHistory] = useState([]);
     const [error, setError] = useState('');
@@ -31,15 +31,15 @@ function OrderHistory(props) {
     };
 
     return (
-        <div className="h-full w-full flex flex-col items-center justify-center p-6 bg-gray-100">
+        <div className="h-full w-full flex flex-col items-center justify-center p-6 bg-[#1B2A41]">
             <div className="mb-6 text-center">
-                <h1 className="text-3xl font-bold text-gray-800 mb-2">Order History</h1>
-                <p className="text-gray-500">Review all previous orders below</p>
+                <h1 className="text-3xl font-bold text-white mb-2">Order History</h1>
+                <p className="text-gray-400">Review all previous orders below</p>
             </div>
 
-            <div className="bg-white w-full shadow-md rounded-lg overflow-x-hidden">
-                <table className="w-full text-left border-collapse">
-                    <thead className="bg-gray-800 text-white">
+            <div className="bg-[#324A5F] w-full shadow-md rounded-lg overflow-x-hidden">
+                <table className="w-full text-left border-collapse ">
+                    <thead className="text-black bg-[#CCC9DC]">
                     <tr>
                         <th className="border-b p-3 text-center">Sr No.</th>
                         <th className="border-b p-3 text-center">Order Date</th>
@@ -53,7 +53,7 @@ function OrderHistory(props) {
                             <tr
                                 key={index}
                                 onClick={() => handleCardClick(order.id)}
-                                className="cursor-pointer hover:bg-gray-100 transition-colors"
+                                className="cursor-pointer hover:bg-gray-100 transition-colors bg-[#324A5F] text-white"
                             >
                                 <td className="border-b p-3 text-center">{index+1}</td>
                                 <td className="border-b p-3 text-center">{new Date(order.date).toLocaleDateString()}</td>
@@ -75,4 +75,4 @@ function OrderHistory(props) {
     );
 }
 
-export default OrderHistory;
+export default SellsHistory;
