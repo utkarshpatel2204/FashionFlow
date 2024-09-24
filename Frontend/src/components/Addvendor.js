@@ -58,17 +58,7 @@ const AddVendor = (props) => {
             <div className=" p-8 rounded-lg shadow-lg text-white">
                 <h1 className="text-3xl font-bold mb-6">Add Vendor</h1>
                 <form onSubmit={handleAddVendor} className="space-y-4">
-                    {/*<div>*/}
-                    {/*    <label className="block text-sm font-semibold text-gray-800 mb-1">Email</label>*/}
-                    {/*    <input*/}
-                    {/*        type="text"*/}
-                    {/*        name='email'*/}
-                    {/*        value={email}*/}
-                    {/*        onChange={(e) => setEmail(e.target.value)}*/}
-                    {/*        required*/}
-                    {/*        className="w-full p-2 text-sm border border-gray-300 rounded-lg"*/}
-                    {/*    />*/}
-                    {/*</div>*/}
+
                     <div>
                         <label className="block text-sm font-semibold text-white mb-1">Shop Name:</label>
                         <input

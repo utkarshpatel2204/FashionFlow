@@ -43,9 +43,9 @@ const AddItemStock = (prop) => {
             </div>
 
             <form onSubmit={handleSubmit} className="flex gap-3 mt-5 flex-col bg-[#1B2A41]">
-                {/* Left side - Form Inputs */}
+
                 <div className="grid grid-cols-2 gap-10 w-full">
-                    {/* Design No. Input */}
+
                     <div className="space-y-5">
                         <label htmlFor="design_no" className="block text-sm font-semibold text-white mb-1">
                             Item Name
@@ -61,7 +61,7 @@ const AddItemStock = (prop) => {
                         />
                     </div>
 
-                    {/* Total Set Input */}
+
                     <div className="space-y-5">
                         <label htmlFor="total_set" className="block text-sm font-semibold text-[#3A0A3E] mb-1">
                             Quantity

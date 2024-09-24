@@ -68,13 +68,7 @@ function Purchase(props) {
         const updatedOrderItems = [...orderItems];
         updatedOrderItems[index][field] = value;
 
-        // if (field === 'item_name') {
-        //     const selectedProduct = itemDetails.find(product => product.item_name === value);
-        //     updatedOrderItems[index].price = selectedProduct ? selectedProduct.price : 0;
-        //     updatedOrderItems[index].category = selectedProduct ? selectedProduct.category : '';
-        //     updatedOrderItems[index].status = updatedOrderItems[index].quantity > selectedProduct?.total_quantity ? 'Not in Stock' : 'In Stock';
-        // }
-   //  console.log(updatedOrderItems[index])
+
         console.log(field)
         if (field === 'quantity' || field==='price') {
             console.log(updatedOrderItems[index])
@@ -101,7 +95,7 @@ function Purchase(props) {
         const hasUniqueitem_name = new Set(itemName).size === itemName.length;
         const allitem_namesFilled = orderItems.every(item => item.item_name !== '');
         const allQuantitiesValid = orderItems.every(item => item.quantity > 0);
-      //  const allInStock = orderItems.every(item => item.status === 'In Stock');
+
         return hasUniqueitem_name && allitem_namesFilled && allQuantitiesValid && party;
     };
 

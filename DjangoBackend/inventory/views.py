@@ -57,8 +57,7 @@ class VendorView(APIView):
                   'owner_name': request.data.get('owner_name'),
                   'contact': request.data.get('contact'),
                   'GST': request.data.get('GST'), 'address': request.data.get('address')})
-        # print(settings.DATABASES)
-        # print(serializer.data)
+
         print(serializer.is_valid())
         print(serializer.errors)
         if serializer.is_valid():

@@ -79,19 +79,6 @@ DATABASES = {
     }
 }
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'djongo',
-#         'NAME': 'User_details',  # Use environment variable or default to 'User_details'
-#         'CLIENT': {
-#             'host': 'mongodb://localhost:27017/',  # Replace with your MongoDB host URL
-#
-#         }
-#
-#     }
-# }
-# Password validation
-# https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {

@@ -161,7 +161,7 @@ function NewSells(props) {
                 setError('Error adding stock:');
             }
         } else {
-            setError('Validation failed! Ensure unique Design Nos, valid quantities, and all items in stock.');
+            setError('Validation failed! Ensure unique item , valid quantities, and all items in stock.');
             setSuccessMessage('');
         }
     };

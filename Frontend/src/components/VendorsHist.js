@@ -78,7 +78,7 @@ const VendorsHistory = (props) => {
                     onChange={handleInputChange}
                     onFocus={() => setShowDropdown(true)} // Show dropdown when input is focused
                     ref={inputRef} // Set ref for input field
-                    className="form-input h-10 rounded border border-gray-300 px-4 w-full bg-[#324A5F]"
+                    className="form-input h-10 rounded border border-gray-300 text-white px-4 w-full bg-[#324A5F]"
                     placeholder="enter shop name"
                 />
                 
