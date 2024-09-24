@@ -12,6 +12,7 @@ import Purchase from "./Purchase";
 import SellsHistory from "./SellsHistory";
 import PurchaseHistory from "./PurchaseHistory";
 import img from './Screenshot 2024-09-24 120634.png'
+import img1 from './PPM-JanFeb23-Supply-chain_empty-shelves.jpg'
 const MainPage = () => {
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState('');
@@ -71,7 +72,7 @@ const MainPage = () => {
                 {/* Profile section inside navbar */}
                 <div className="flex items-center">
                     <div className="w-12 h-12 bg-[#324A5F] rounded-full mr-4"></div> {/* Profile photo */}
-                    <h3 className="text-[#CCC9DC]">{username}</h3>
+                    <h3 className="text-[#CCC9DC]">Fashion Flow</h3>
                 </div>
                 <ul className="flex space-x-6">
                     <li className="relative">
@@ -153,10 +154,10 @@ const MainPage = () => {
                     {/*<div className="w-28 h-28 bg-white rounded-lg shadow-lg">*/}
                     {/*    /!* Placeholder for random photo *!/*/}
                     {/*</div>*/}
-                    <img src={img} alt="as"className='h-full' />
+                    <img src={img1} alt="as"className='h-full' />
                 </div>
 
-                <div className="flex-grow p-5 overflow-y-hidden">
+                <div className="flex-grow p-5 overflow-y-auto">
                     <div className="mt-5 text-lg text-[#1B2A41] flex justify-center items-center">
                         {activeContent}
                     </div>
