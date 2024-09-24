@@ -135,16 +135,16 @@ function Purchase(props) {
     };
 
     return (
-        <div className='h-full w-full flex flex-col items-center justify-center p-3 bg-[#1B2A41] text-white'>
+        <div className='h-[80%] w-full flex flex-col items-center justify-center p-3 bg-[#1B2A41] text-white rounded-xl overflow-y-auto'>
             <div className="mb-8 text-center">
-                <h1 className="text-3xl font-bold text-white mb-2">Add New Order</h1>
-                <p className="text-gray-400 text-lg">Fill out the details to add a new order.</p>
+                <h1 className="text-3xl font-bold text-white mb-2">Add New Purchase</h1>
+                <p className="text-gray-400 text-lg">Fill out the details to add a new Purchase.</p>
 
 
             </div>
 
             {/* Party Information Section */}
-            <div className='w-full bg-[#324A5F] p-6 rounded-md shadow-md mb-4'>
+            <div className='w-full bg-[#324A5F] p-6 rounded-md shadow-md mb-4 '>
                 <div className="mb-4">
                     <label htmlFor="shop_name" className="block text-lg font-semibold mb-2">Shop Name</label>
                     <Select options={vendorNameList} onChange={handlevendorNameChange} className="w-full bg-[#324A5F] text-black" />
@@ -163,8 +163,8 @@ function Purchase(props) {
                 <p className="mt-4 text-white"><strong>Date:</strong> {date}</p>
             </div>
 
-            {/* Order Items Section */}
-            <div className='w-full bg-[#324A5F] p-6 rounded-md shadow-md '>
+            {/* Purchase Items Section */}
+            <div className='w-full bg-[#324A5F] p-6 rounded-md shadow-md overflow-y-auto'>
                 <table className="w-full table-auto border-collapse bg-[#CCC9DC] ">
                     <thead>
                     <tr className="text-black">
