@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import initialImage from './initial.png';
+import initialImage from './DefaultImg.png';
 import axios from "axios";
 import Product from './AddItems'; // Ensure this path is correct
 
