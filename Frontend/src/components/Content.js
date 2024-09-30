@@ -61,8 +61,10 @@ const Content = (props) => {
             {
                 label: 'Purchases',
                 data: uniqueDates.map(date => {
-                    const purchase = purchaseHistory.find(p => new Date(p.date).toLocaleDateString() === date);
-                    return purchase ? parseFloat(purchase.total_price) : 0;
+                    const totalPurchases = purchaseHistory
+                        .filter(p => new Date(p.date).toLocaleDateString() === date)
+                        .reduce((sum, purchase) => sum + parseFloat(purchase.total_price || 0), 0);
+                    return totalPurchases;
                 }),
                 backgroundColor: '#FFFFFF', // Color for Purchases
                 borderColor: '#1B2A41',
@@ -71,8 +73,10 @@ const Content = (props) => {
             {
                 label: 'Revenue',
                 data: uniqueDates.map(date => {
-                    const order = orderHistory.find(o => new Date(o.date).toLocaleDateString() === date);
-                    return order ? parseFloat(order.total_price) : 0;
+                    const totalRevenue = orderHistory
+                        .filter(o => new Date(o.date).toLocaleDateString() === date)
+                        .reduce((sum, order) => sum + parseFloat(order.total_price || 0), 0);
+                    return totalRevenue;
                 }),
                 backgroundColor: '#FF6F61', // Color for Revenue
                 borderColor: '#1B2A41',
@@ -83,6 +87,7 @@ const Content = (props) => {
 
     const chartOptions = {
         responsive: true,
+        maintainAspectRatio: false, // Allow the chart to take custom height and width
         plugins: {
             legend: {
                 position: 'top',
@@ -94,6 +99,18 @@ const Content = (props) => {
                 display: true,
                 text: 'Earnings Overview',
                 color: '#FFFFFF', // Adjust title color
+            },
+        },
+        scales: {
+            x: {
+                ticks: {
+                    color: '#FFFFFF', // Set x-axis labels color to white
+                },
+            },
+            y: {
+                ticks: {
+                    color: '#FFFFFF', // Set y-axis labels color to white (optional)
+                },
             },
         },
     };
@@ -124,7 +141,7 @@ const Content = (props) => {
             </div>
 
             {/* Earnings Chart */}
-            <div className="bg-[#324A5F] rounded-lg p-6 w-full md:w-4/5 shadow-lg">
+            <div className="bg-[#324A5F] rounded-lg p-6 w-full md:w-4/5 shadow-lg" style={{ height: '500px', width: '100%' }}>
                 <Bar data={chartData} options={chartOptions} />
             </div>
         </div>

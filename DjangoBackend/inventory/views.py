@@ -206,22 +206,4 @@ class GetSellsView(APIView):
         except Exception as e:
             return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-class GetOrderDetailView(APIView):
-   def get(self, request,pk):
-        user_email = request.query_params.get('email')
-        print(user_email)
-        order = OrderList.objects.filter(_id=ObjectId(pk))
-        print(order)
-        serializer = OrderSerializer(order, many=True)
-        return Response(serializer.data , status=status.HTTP_200_OK)
 
-class GetPurchaseDetailView(APIView):
-    def get(self, request, pk):
-        user_email = request.query_params.get('email')
-        print(user_email)
-        print(pk)
-
-        order = PurchaseList.objects.filter(_id=ObjectId(pk))
-        print(order)
-        serializer = PurchaseSerializer(order, many=True)
-        return Response(serializer.data, status=status.HTTP_200_OK)

@@ -62,7 +62,7 @@ const ViewItemStock = (props) => {
                         </thead>
                         <tbody className="divide-y divide-gray-300">
                             {filteredProducts.map((product,index) => (
-                                <tr key={product.id} className="hover:bg-[#324A5F] bg-[#324A5F] transition duration-300 ease-in-out">
+                                <tr key={product.id} className="hover:bg-gray-200 transition duration-300 ease-in-out hover:text-black">
                                      <td className="py-3 px-4 text-center border-r border-gray-300">{index + 1}</td>
                                     <td className="py-3 px-4 text-center border-r border-gray-300">
                                         <img 

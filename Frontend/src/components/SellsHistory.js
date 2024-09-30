@@ -53,7 +53,7 @@ function SellsHistory(props) {
                             <tr
                                 key={index}
                                 onClick={() => handleCardClick(order.id)}
-                                className="cursor-pointer hover:bg-gray-100 transition-colors bg-[#324A5F] text-white"
+                                className="cursor-pointer hover:bg-gray-100 transition-colors bg-[#324A5F] text-white hover:text-black"
                             >
                                 <td className="border-b p-3 text-center">{index+1}</td>
                                 <td className="border-b p-3 text-center">{new Date(order.date).toLocaleDateString()}</td>

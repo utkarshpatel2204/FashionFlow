@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import Select from 'react-select';
 import axios from 'axios';
+import jsPDF from 'jspdf';
+import 'jspdf-autotable';
+import html2canvas from 'html2canvas';
+
 
 function NewSells(props) {
     const userEmail = props.Email;
@@ -137,6 +141,64 @@ function NewSells(props) {
         return hasUniqueitem_name && allitem_namesFilled && allQuantitiesValid && allInStock && party;
     };
 
+    const generateInvoiceNumber = () => {
+        return `INV-${Math.floor(100000 + Math.random() * 900000)}`;
+    };
+
+    const generatePDF = () => {
+    const doc = new jsPDF();
+
+    // Set the font size for the title
+    doc.setFontSize(18);
+    doc.text("Invoice", 14, 20);  // Title text at (14, 20)
+
+    // Set font size for normal text
+    doc.setFontSize(12);
+
+    const invoiceNumber = generateInvoiceNumber();
+    doc.text(`Invoice Number: ${invoiceNumber}`, 14, 30);
+    doc.text(`Date: ${new Date().toLocaleString()}`, 14, 38);
+    doc.text(`Vendor: ${vendorName}`, 14, 46);
+
+    if (vendorDetails) {
+        doc.text(`Owner: ${vendorDetails.owner_name}`, 14, 54);
+        doc.text(`Address: ${vendorDetails.address}`, 14, 62);
+        doc.text(`GST: ${vendorDetails.GST}`, 14, 70);
+        doc.text(`Mobile: ${vendorDetails.contact}`, 14, 78);
+    }
+
+    // Adding space between vendor details and table
+    doc.setFontSize(14);
+    doc.text("Order Details", 14, 90); // Add a heading for the order details section
+
+    // Reset font size for table content
+    doc.setFontSize(12);
+
+    // AutoTable for order items
+    doc.autoTable({
+        head: [['Sr No', 'Item Name', 'Quantity', 'Category', 'Price', 'Total', 'Status']],
+        body: orderItems.map(item => [
+            item.srNo,
+            item.item_name,
+            item.quantity,
+            item.category,
+            `₹${parseFloat(item.price).toFixed(2)}`,  // Ensure 2 decimal places
+            `₹${parseFloat(item.total_price).toFixed(2)}`, // Ensure 2 decimal places
+            item.status
+        ]),
+        startY: 100, // Starting position for the table
+        margin: { left: 14, right: 14 }, // Add some margin to the sides
+        theme: 'grid',  // Optional theme for better styling (other options are 'striped', 'plain')
+    });
+
+    // Add total price at the bottom of the table
+    doc.text(`Total Price: ₹${parseFloat(totalPrice).toFixed(2)}`, 14, doc.autoTable.previous.finalY + 10);
+
+    // Save the PDF with the generated invoice number
+    doc.save(`${invoiceNumber}.pdf`);
+};
+
+
     const handleSave = async () => {
         if (validateOrderItems()) {
             try {
@@ -156,6 +218,7 @@ function NewSells(props) {
 
                 setSuccessMessage('Order is saved');
                 setError('');
+                 generatePDF(); // Generate PDF after successful save
             } catch (error) {
                 console.error('Error adding stock:', error);
                 setError('Error adding stock:');

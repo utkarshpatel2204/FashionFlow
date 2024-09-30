@@ -1,6 +1,6 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from .views import ItemView, ViewItems,VendorView,ViewVendorView,AddSellView,UpdateItemView,AddPurchaseView,GetPurchaseView,GetSellsView,GetOrderDetailView,GetPurchaseDetailView
+from .views import ItemView, ViewItems,VendorView,ViewVendorView,AddSellView,UpdateItemView,AddPurchaseView,GetPurchaseView,GetSellsView
 
 urlpatterns = [
     path('additems/',ItemView.as_view() ),
@@ -12,6 +12,5 @@ urlpatterns = [
     path('addpurchases/',AddPurchaseView.as_view() ),
     path('getpurchases/',GetPurchaseView.as_view() ),
     path('getsells/',GetSellsView.as_view() ),
-    path('getOrderDetail/<str:pk>', GetOrderDetailView.as_view() ),
-    path('getPurchaserDetail/<str:pk>', GetPurchaseDetailView.as_view() ),
+
 ]

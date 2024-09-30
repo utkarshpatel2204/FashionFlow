@@ -35,6 +35,7 @@ const AddItemStock = (prop) => {
         }
     };
 
+
     return (
         <div className="bg-[#1B2A41] p-6 rounded-lg h-full w-full">
             <div className="mb-4">
@@ -47,7 +48,7 @@ const AddItemStock = (prop) => {
                 <div className="grid grid-cols-2 gap-10 w-full">
 
                     <div className="space-y-5">
-                        <label htmlFor="design_no" className="block text-sm font-semibold text-white mb-1">
+                        <label htmlFor="item_name" className="block text-sm font-semibold text-white mb-1">
                             Item Name
                         </label>
                         <input
@@ -56,23 +57,24 @@ const AddItemStock = (prop) => {
                             name="item_name"
                             value={item_name}
                             onChange={(e) => setitem_name(e.target.value)}
-                            className="w-full border border-gray-300 p-2 rounded bg-[#324A5F]"
+                            className="w-full border border-gray-300 p-2 text-white rounded bg-[#324A5F]"
                             required
                         />
                     </div>
 
 
                     <div className="space-y-5">
-                        <label htmlFor="total_set" className="block text-sm font-semibold text-[#3A0A3E] mb-1">
+                        <label htmlFor="total_set" className="block text-sm font-semibold text-white mb-1">
                             Quantity
                         </label>
                         <input
-                            type="text"
+                            type="number"
                             id="total_quantity"
                             name="total_quantity"
+                            min={0}
                             value={totalquantity}
                             onChange={(e) => settotalquantity(parseInt(e.target.value))}
-                            className="w-full border border-gray-300 p-2 rounded bg-[#324A5F]"
+                            className="w-full border border-gray-300 p-2 text-white rounded bg-[#324A5F]"
                             required
                         />
                     </div>

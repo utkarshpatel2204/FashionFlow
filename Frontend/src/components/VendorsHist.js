@@ -119,7 +119,7 @@ const VendorsHistory = (props) => {
                             {filteredVendors.length > 0 ? (
                                 filteredVendors.map((vendor) => (
                                     <tr key={vendor.id}
-                                        className="hover:bg-gray-200 transition duration-300 ease-in-out">
+                                        className="hover:bg-gray-200 transition duration-300 ease-in-out hover:text-black">
                                         <td className="py-3 px-4 text-center border-r border-gray-300">{vendor.shop_name}</td>
                                         <td className="py-3 px-4 text-center border-r border-gray-300">{vendor.owner_name}</td>
                                         <td className="py-3 px-4 text-center border-r border-gray-300">{vendor.contact}</td>
